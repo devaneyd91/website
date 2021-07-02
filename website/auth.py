@@ -52,7 +52,7 @@ def sign_up():
             flash('First name must be greater than 1 character', category = 'error')
         elif password1 != password2:
            flash('Passwords do not match', category = 'error')
-        elif len(password1) < 1:
+        elif len(password1) < 7:
             flash('Password must be at least 7 characters long', category = 'error')     
         else: 
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='sha256'))               
