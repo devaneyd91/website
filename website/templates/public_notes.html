@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Members Area{% endblock %} {% block content
+    %}
+    <h1 align="center">Welcome to the public notes area</h1>
+    <h3 align='center'>Use this space to review and comment on others posts</h2>
+    
+    <ul class="list-group list-group-flush" id="notes">
+        {% for pub_note  in pub_notes %}
+        <li class="list-group-items">{{ pub_note.data }}  : {{ pub_note.user_id}} : {{pub_note.date}}
+            <button type="button" class="close" onClick="deleteNote({{ pub_note.id }})">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -27,7 +27,7 @@ def create_app():
 
     
 
-    from .models import User, Note
+    from .models import User, Note, Pub_Note
 
     create_database(app)
 
