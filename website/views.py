@@ -18,6 +18,7 @@ def home():
 def members_area():
     if request.method == "POST":
         note = request.form.get('note')
+        name = request.form.get('first_name')
         check1 = request.form.get('check1')
         
         if check1:
@@ -25,7 +26,7 @@ def members_area():
             if len(note) < 1:
                 flash('Note is too short!', category='error')
             else:
-                new_note = Pub_Note(data=note, user_id=current_user.id)
+                new_note = Pub_Note(first_name=current_user.first_name, data=note, user_id=current_user.id)
                 db.session.add(new_note)
                 db.session.commit()
                 flash('Note added!', category='success')
@@ -57,7 +58,7 @@ def create_connection():
 
     note_array = []
     for row in rows:
-        note_array.append(Pub_Note(id=row[0], data=row[1], user_id=row[2], date=row[3]))
+        note_array.append(Pub_Note(id=row[0], first_name=row[1], data=row[2], user_id=row[3], date=row[4]))
 
     
     return note_array

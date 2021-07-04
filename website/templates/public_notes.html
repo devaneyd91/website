@@ -5,7 +5,7 @@
     
     <ul class="list-group list-group-flush" id="notes">
         {% for pub_note  in pub_notes %}
-        <li class="list-group-items">{{ pub_note.data }}  : {{ pub_note.user_id}} : {{pub_note.date}}
+        <li class="list-group-items"><b>Note:</b>  {{ pub_note.data }}<br /> <b>Posted By:</b> {{ pub_note.first_name}} <br /><b>Date:</b> {{pub_note.date}}
             <button type="button" class="close" onClick="deleteNote({{ pub_note.id }})">
                 <span aria-hidden="true">&times;</span>
             </button>

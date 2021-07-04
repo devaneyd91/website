@@ -10,6 +10,7 @@ class Note(db.Model):
 
 class Pub_Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(150))
     data = db.Column(db.String(10000))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
