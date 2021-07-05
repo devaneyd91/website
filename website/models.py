@@ -8,12 +8,20 @@ class Note(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-class Pub_Note(db.Model):
+class Pubnote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(150))
     data = db.Column(db.String(10000))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
+
+class Pubcoms(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(150))
+    data = db.Column(db.String(10000))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    public_note = db.Column(db.Integer, db.ForeignKey('pubnote.id'))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())  
     
 
 class User(db.Model, UserMixin):

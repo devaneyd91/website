@@ -4,12 +4,18 @@
     <h3 align='center'>Use this space to review and comment on others posts</h2>
     
     <ul class="list-group list-group-flush" id="notes">
-        {% for pub_note  in pub_notes %}
-        <li class="list-group-items"><b>Note:</b>  {{ pub_note.data }}<br /> <b>Posted By:</b> {{ pub_note.first_name}} <br /><b>Date:</b> {{pub_note.date}}
-            <button type="button" class="close" onClick="deleteNote({{ pub_note.id }})">
+        {% for pubnote  in Pubnotes %}
+        <li class="list-group-items"><b>Note:</b>  {{ pubnote.data }}<br /> <b>Posted By:</b> {{ pubnote.first_name}} <br /><b>Date:</b> {{pubnote.date}}
+             
+            <button type="button"  class="close" onClick="deletePubnote({{ pubnote.id }})">
                 <span aria-hidden="true">&times;</span>
             </button>
         </li>
+
+        <input style="height:50px;width:100%" type="text" id="pubcom{{ pubnote.id }}" placeholder="Leave a comment for the author!">
+            
+        <button style="height:40px;width:70px" type="button"  onClick="commentPubnote({{ pubnote.id }})">Submit</button>
+
         {% endfor %}
     </ul>
 

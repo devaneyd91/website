@@ -27,7 +27,7 @@ def create_app():
 
     
 
-    from .models import User, Note, Pub_Note
+    from .models import User, Note, Pubnote, Pubcoms
 
     create_database(app)
 
@@ -37,7 +37,10 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(id):
-        return User.query.get(int(id))    
+        try:
+            return User.query.get(int(id))    
+        except:
+            return None
     
     return app
 
