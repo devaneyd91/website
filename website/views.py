@@ -118,3 +118,21 @@ def comment_pubnote():
     
     return jsonify({})
     
+
+
+@views.route('/rate-pubnote', methods=['POST'])
+@login_required
+def post_rating():
+    rating = json.loads(request.data)
+    noteId = rating['noteId']
+    rating = rating['rating']
+    
+    
+    note = Pubnote.query.get(noteId)
+    note.rating = rating
+    db.session.commit()
+    flash('Rating Added!', category='success')
+
+            
+    
+    return jsonify({})

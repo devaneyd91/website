@@ -24,4 +24,27 @@ function deletePubnote(noteId) {
      }).then((_res) => {
         window.location.href = "public_notes";
     });
- }
+}
+
+ $(document).ready(function(){
+    // Check Radio-box
+    $(".rating input:radio").attr("checked", false);
+
+    $('.rating input').click(function () {
+        $(".rating span").removeClass('checked');
+        $(this).parent().addClass('checked');
+    });
+
+    $('input:radio').change(
+      function(){
+        var userRating = this.value;
+        var noteId = $("input:radio").parent().attr('id');
+        fetch('rate-pubnote',{
+            method: "POST",
+            body: JSON.stringify({ noteId: noteId, rating: userRating})
+        }).then((_res) => {
+            window.location.href = "public_notes";
+            alert(noteId);
+        });
+    });
+});
